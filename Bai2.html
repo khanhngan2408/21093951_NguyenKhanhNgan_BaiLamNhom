@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        #datetime {
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            border-radius: 50px;
+            width: 50%;
+            height: 50%;
+            margin: auto;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 64px;
+            text-align: center;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        </style>
+</head>
+<body>
+    <div id="datetime"></div>    
+    <script>
+        function Time() {
+        var date = new Date();
+
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var second = date.getSeconds();
+
+        var period = "";
+        if (hour >= 12) {
+            period = "PM";
+        }  else {
+            period = "AM";
+        }
+
+        if (hour == 0) {
+            hour = 12;
+        } else {
+        if (hour > 12) {
+            hour = hour - 12;
+        }
+        }
+
+        hour = update(hour);
+        minute = update(minute);
+        second = update(second);
+
+        document.getElementById("datetime").innerText = hour + " : " + minute + " : " + second + " " + period;
+
+        setTimeout(Time, 1000);
+        }
+        function update (t) {
+            if (t < 10) {
+                return "0" + t;
+            }
+        else {
+            return t;
+        }
+        }
+
+        Time();
+    </script>
+</body>
+</html>
